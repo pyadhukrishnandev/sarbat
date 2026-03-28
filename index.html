@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarbat — Brand Bible</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #E8650A;
+    --saffron-light: #F5893A;
+    --saffron-pale: #FEF0E6;
+    --night: #0F0E0C;
+    --ink: #1C1A17;
+    --stone: #4A4540;
+    --dust: #9C9188;
+    --cream: #F9F5EF;
+    --white: #FDFCFA;
+    --teal: #0D6E6E;
+    --teal-light: #12A3A3;
+    --gold: #C9901A;
+    --gold-light: #F0BE5A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--night);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 56px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--saffron);
+    letter-spacing: 0.04em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dust);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--night);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 80px 48px 48px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(232,101,10,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 80% 20%, rgba(13,110,110,0.10) 0%, transparent 70%);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(232,101,10,0.15);
+    border: 1px solid rgba(232,101,10,0.3);
+    color: var(--saffron-light);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(72px, 12vw, 160px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .hero h1 span {
+    color: var(--saffron);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(16px, 2.5vw, 24px);
+    color: var(--dust);
+    font-style: italic;
+    margin-bottom: 48px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-tagline {
+    font-size: clamp(18px, 3vw, 32px);
+    font-weight: 300;
+    color: var(--white);
+    max-width: 700px;
+    line-height: 1.4;
+    margin-bottom: 64px;
+  }
+
+  .hero-tagline strong {
+    color: var(--saffron);
+    font-weight: 600;
+  }
+
+  .hero-scroll {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dust);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: absolute;
+    bottom: 40px;
+  }
+  .hero-scroll::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--dust);
+  }
+
+  /* SECTION BASE */
+  section {
+    padding: 120px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-full {
+    max-width: 100%;
+    padding: 120px 0;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--saffron);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--stone);
+    max-width: 680px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(74,69,64,0.2), transparent);
+    margin: 0 48px;
+    width: calc(100% - 96px);
+  }
+
+  /* BRAND FOUNDATION */
+  .foundation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 64px;
+  }
+
+  .foundation-card {
+    background: var(--white);
+    border: 1px solid rgba(74,69,64,0.1);
+    border-radius: 16px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .foundation-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  }
+  .foundation-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--saffron);
+  }
+
+  .card-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--dust);
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .card-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--stone);
+    max-width: 100%;
+  }
+
+  /* DARK SECTION */
+  .dark-section {
+    background: var(--night);
+    color: var(--white);
+    padding: 120px 48px;
+  }
+
+  .dark-section h2 { color: var(--white); }
+  .dark-section p { color: rgba(255,255,255,0.6); }
+  .dark-section .section-label { color: var(--saffron-light); }
+  .dark-section .section-label::after { background: var(--saffron-light); }
+
+  /* TAGLINES */
+  .tagline-list {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tagline-item {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    cursor: default;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .tagline-item:hover .tagline-text {
+    color: var(--saffron-light);
+    transform: translateX(8px);
+  }
+
+  .tagline-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.1em;
+    min-width: 32px;
+  }
+
+  .tagline-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--white);
+    transition: all 0.3s;
+    flex: 1;
+  }
+
+  .tagline-hero {
+    background: rgba(232,101,10,0.1);
+    border: 1px solid rgba(232,101,10,0.25);
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    white-space: nowrap;
+  }
+
+  .tagline-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    min-width: 180px;
+    text-align: right;
+  }
+
+  /* BRAND STORY */
+  .story-section {
+    background: var(--saffron);
+    padding: 120px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .story-section::before {
+    content: '"';
+    position: absolute;
+    top: -40px;
+    left: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 400px;
+    color: rgba(0,0,0,0.08);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .story-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .story-inner .section-label {
+    color: rgba(0,0,0,0.5);
+  }
+  .story-inner .section-label::after {
+    background: rgba(0,0,0,0.3);
+  }
+
+  .story-inner h2 {
+    color: var(--white);
+    font-size: clamp(40px, 6vw, 80px);
+    margin-bottom: 40px;
+  }
+
+  .story-para {
+    font-size: clamp(18px, 2.5vw, 24px);
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    max-width: 100%;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .story-para strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .story-closing {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 4vw, 48px);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--white);
+    margin-top: 48px;
+  }
+
+  /* PERSONA SECTION */
+  .persona-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+  }
+
+  .persona-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid rgba(74,69,64,0.08);
+    transition: all 0.3s;
+  }
+
+  .persona-card:hover {
+    border-color: var(--saffron);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(232,101,10,0.1);
+  }
+
+  .persona-emoji {
+    font-size: 40px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .persona-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .persona-role {
+    font-size: 13px;
+    color: var(--saffron);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+
+  .persona-quote {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--stone);
+    font-style: italic;
+    max-width: 100%;
+    border-left: 3px solid var(--saffron-pale);
+    padding-left: 16px;
+  }
+
+  /* CAMPAIGNS */
+  .campaign-list {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .campaign-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 48px;
+    border: 1px solid rgba(74,69,64,0.08);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+    align-items: start;
+    transition: all 0.3s;
+  }
+
+  .campaign-card:hover {
+    box-shadow: 0 20px 64px rgba(0,0,0,0.07);
+  }
+
+  .campaign-left {}
+
+  .campaign-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 48px;
+    font-weight: 500;
+    color: var(--saffron-pale);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .campaign-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .campaign-hindi {
+    font-size: 14px;
+    color: var(--dust);
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+
+  .campaign-tag {
+    display: inline-block;
+    background: var(--saffron-pale);
+    color: var(--saffron);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  .campaign-right {}
+
+  .campaign-concept {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--stone);
+    max-width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .campaign-line {
+    background: var(--night);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 20px 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .campaign-formats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .format-tag {
+    background: rgba(74,69,64,0.06);
+    color: var(--stone);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+  }
+
+  /* VISUAL IDENTITY */
+  .identity-section {
+    background: var(--ink);
+    padding: 120px 48px;
+  }
+
+  .colors-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    margin-top: 48px;
+  }
+
+  .color-swatch {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .swatch-color {
+    height: 80px;
+  }
+
+  .swatch-info {
+    padding: 12px;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .swatch-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+  }
+
+  .swatch-hex {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .type-display {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .type-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 40px;
+  }
+
+  .type-label {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 24px;
+  }
+
+  .type-sample-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .type-sample-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .type-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--saffron);
+    margin-top: 20px;
+  }
+
+  /* GTM */
+  .gtm-phases {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .gtm-phases::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--saffron) 0%, var(--teal) 100%);
+  }
+
+  .phase-item {
+    display: flex;
+    gap: 40px;
+    padding-bottom: 56px;
+    position: relative;
+  }
+
+  .phase-dot {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--saffron);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .phase-content {
+    flex: 1;
+    padding-top: 8px;
+  }
+
+  .phase-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .phase-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--stone);
+    max-width: 600px;
+    margin-bottom: 16px;
+  }
+
+  .phase-target {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--saffron-pale);
+    color: var(--saffron);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 100px;
+  }
+
+  /* PITCH */
+  .pitch-section {
+    background: linear-gradient(135deg, var(--teal) 0%, #0a4a4a 100%);
+    padding: 120px 48px;
+    text-align: center;
+  }
+
+  .pitch-section .section-label {
+    color: rgba(255,255,255,0.5);
+    justify-content: center;
+  }
+  .pitch-section .section-label::after {
+    background: rgba(255,255,255,0.3);
+  }
+
+  .pitch-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    max-width: 900px;
+    margin: 0 auto 48px;
+    font-style: italic;
+  }
+
+  .pitch-text span { color: var(--gold-light); }
+
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    flex-wrap: wrap;
+    margin-top: 64px;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em;
+    max-width: 120px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--night);
+    padding: 64px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--saffron);
+    font-style: italic;
+  }
+
+  .footer-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+
+  .footer-tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-tagline span { color: var(--saffron); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * {
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero > *:nth-child(2) { animation-delay: 0.1s; }
+  .hero > *:nth-child(3) { animation-delay: 0.2s; }
+  .hero > *:nth-child(4) { animation-delay: 0.3s; }
+  .hero > *:nth-child(5) { animation-delay: 0.4s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    section { padding: 80px 24px; }
+    .dark-section, .story-section, .identity-section, .pitch-section { padding: 80px 24px; }
+    .foundation-grid { grid-template-columns: 1fr; }
+    .persona-grid { grid-template-columns: 1fr; }
+    .campaign-card { grid-template-columns: 1fr; gap: 24px; }
+    .colors-grid { grid-template-columns: repeat(3, 1fr); }
+    .type-display { grid-template-columns: 1fr; }
+    .stats-row { gap: 40px; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+    .tagline-sub { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Sarbat</div>
+  <ul class="nav-links">
+    <li><a href="#foundation">Foundation</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#taglines">Taglines</a></li>
+    <li><a href="#campaigns">Campaigns</a></li>
+    <li><a href="#identity">Identity</a></li>
+    <li><a href="#gtm">Go-to-Market</a></li>
+    <li><a href="#pitch">Pitch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-badge">Brand Bible — Complete Concept</div>
+  <h1><span>Sarbat</span></h1>
+  <div class="hero-sub">sarbat.io — The Platform for Every Indian Business</div>
+  <div class="hero-tagline">
+    A WhatsApp-first SaaS built for <strong>every small business in India</strong> —
+    regardless of language, region, religion, or size.
+  </div>
+  <div class="hero-scroll">Scroll to explore</div>
+</div>
+
+<!-- BRAND FOUNDATION -->
+<section id="foundation">
+  <div class="section-label">01 — Brand Foundation</div>
+  <h2>What Sarbat<br>stands for</h2>
+  <p>Every decision — name, design, product, marketing — flows from these core truths.</p>
+
+  <div class="foundation-grid">
+
+    <div class="foundation-card">
+      <div class="card-number">01 / Name Origin</div>
+      <div class="card-title">Sarbat da Bhala</div>
+      <div class="card-body">
+        From the Sikh Ardas prayer — <em>"wellbeing and prosperity for all of humanity."</em>
+        This prayer has been recited for 500 years across every caste, creed, and community.
+        It belongs to no one exclusively. It belongs to everyone. Exactly like your platform.
+      </div>
+    </div>
+
+    <div class="foundation-card">
+      <div class="card-number">02 / Mission</div>
+      <div class="card-title">Every business deserves great tools</div>
+      <div class="card-body">
+        India's 63 million small businesses run on grit, chai, and WhatsApp forwards.
+        They have been ignored by every enterprise software company. Sarbat exists to change that —
+        one shop, one salon, one clinic at a time.
+      </div>
+    </div>
+
+    <div class="foundation-card">
+      <div class="card-number">03 / Vision</div>
+      <div class="card-title">The operating system for Indian SMEs</div>
+      <div class="card-body">
+        A widely adopted conversational business infrastructure enabling millions of small businesses
+        to operate digitally — in their own language, on a platform they already know: WhatsApp.
+      </div>
+    </div>
+
+    <div class="foundation-card">
+      <div class="card-number">04 / Core Promise</div>
+      <div class="card-title">Simple. Direct. Zero Commission.</div>
+      <div class="card-body">
+        No app installs for customers. No commissions on orders. No learning curve for merchants.
+        Just a WhatsApp bot that makes every small business feel like it has an entire operations team.
+      </div>
+    </div>
+
+    <div class="foundation-card">
+      <div class="card-number">05 / Brand Personality</div>
+      <div class="card-title">The trusted neighbourhood expert</div>
+      <div class="card-body">
+        Warm but capable. Street-smart but reliable. Proudly Indian but globally ready.
+        Sarbat speaks to a 60-year-old shopkeeper and a 25-year-old startup founder in the same breath —
+        and both feel seen.
+      </div>
+    </div>
+
+    <div class="foundation-card">
+      <div class="card-number">06 / Positioning</div>
+      <div class="card-title">Anti-Swiggy. Anti-Amazon.</div>
+      <div class="card-body">
+        Where every other platform takes a cut, charges for installs, or complexifies operations —
+        Sarbat does the opposite. It makes the merchant the centre of gravity.
+        Direct commerce. Full ownership. Zero friction.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TAGLINES -->
+<div class="dark-section" id="taglines">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="section-label">02 — Taglines</div>
+    <h2>Words that carry<br>the mission</h2>
+
+    <div class="tagline-list">
+
+      <div class="tagline-item">
+        <div class="tagline-num">01</div>
+        <div class="tagline-text">Sab ke liye. Sarbat.</div>
+        <div class="tagline-hero">Hero Tagline</div>
+        <div class="tagline-sub">For everyone. Sarbat.</div>
+      </div>
+
+      <div class="tagline-item">
+        <div class="tagline-num">02</div>
+        <div class="tagline-text">Every business. One platform.</div>
+        <div class="tagline-sub">English, clean, direct</div>
+      </div>
+
+      <div class="tagline-item">
+        <div class="tagline-num">03</div>
+        <div class="tagline-text">Bharat ka business platform.</div>
+        <div class="tagline-sub">National pride angle</div>
+      </div>
+
+      <div class="tagline-item">
+        <div class="tagline-num">04</div>
+        <div class="tagline-text">Built for the backbone of India.</div>
+        <div class="tagline-sub">Investor & press angle</div>
+      </div>
+
+      <div class="tagline-item">
+        <div class="tagline-num">05</div>
+        <div class="tagline-text">Aap ki bhasha. Aap ka business.</div>
+        <div class="tagline-sub">Language-first angle</div>
+      </div>
+
+      <div class="tagline-item">
+        <div class="tagline-num">06</div>
+        <div class="tagline-text">WhatsApp pe hi. Sab kuch.</div>
+        <div class="tagline-sub">Product-led angle</div>
+      </div>
+
+      <div class="tagline-item">
+        <div class="tagline-num">07</div>
+        <div class="tagline-text">Grow without borders.</div>
+        <div class="tagline-sub">Global expansion angle</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- BRAND STORY -->
+<div class="story-section" id="story">
+  <div class="story-inner">
+    <div class="section-label">03 — Brand Story</div>
+    <h2>The Story We Tell</h2>
+
+    <p class="story-para">India has <strong>63 million small businesses.</strong></p>
+    <p class="story-para">They run grocery stores and salons. They fix your shoes and file your taxes. They cook your tiffin and teach your children. They are the real economy of this country.</p>
+    <p class="story-para">Yet every tool built for "business" was built for someone else. Too expensive. Too complex. In the wrong language. Requiring hardware they can't afford or apps their customers won't install.</p>
+    <p class="story-para"><strong>Meanwhile, everyone already has WhatsApp.</strong></p>
+    <p class="story-para">A kirana owner in Coimbatore gets 40 availability enquiries a day on WhatsApp. A tailor in Lucknow loses orders because he can't track them. A salon owner in Patna has no idea which service is her bestseller.</p>
+    <p class="story-para">They don't need Salesforce. They don't need a POS machine. They need something that works — <strong>right where they already are.</strong></p>
+
+    <div class="story-closing">That's Sarbat. Sab ke liye.</div>
+  </div>
+</div>
+
+<!-- WHO WE SERVE -->
+<section>
+  <div class="section-label">04 — Who We Serve</div>
+  <h2>Every business.<br>Every person.</h2>
+  <p>Sarbat is built for the entire spectrum of Indian service SMEs — from the corner grocery to the neighbourhood clinic.</p>
+
+  <div class="persona-grid">
+
+    <div class="persona-card">
+      <span class="persona-emoji">🛒</span>
+      <div class="persona-name">Ramesh, 34</div>
+      <div class="persona-role">Grocery Shop Owner, Thrissur</div>
+      <div class="persona-quote">"I get 40 WhatsApp messages every morning asking if tomatoes are available. By the time I reply to all of them, half the morning is gone."</div>
+    </div>
+
+    <div class="persona-card">
+      <span class="persona-emoji">☕</span>
+      <div class="persona-name">Anjali, 27</div>
+      <div class="persona-role">Café Owner, Pune</div>
+      <div class="persona-quote">"During the morning rush, my staff can't handle orders AND answer inquiries. I lose customers every single day to this problem."</div>
+    </div>
+
+    <div class="persona-card">
+      <span class="persona-emoji">✂️</span>
+      <div class="persona-name">Suresh, 42</div>
+      <div class="persona-role">Salon Owner, Chennai</div>
+      <div class="persona-quote">"I have no way to tell which services are most popular or when to expect a slow week. I'm running blind every month."</div>
+    </div>
+
+    <div class="persona-card">
+      <span class="persona-emoji">👵</span>
+      <div class="persona-name">Amina, 60</div>
+      <div class="persona-role">Customer, Senior Citizen</div>
+      <div class="persona-quote">"I don't know how to use Swiggy or Zepto. But I use WhatsApp every day. If the shop is on WhatsApp, I can order. It's that simple."</div>
+    </div>
+
+    <div class="persona-card">
+      <span class="persona-emoji">🏥</span>
+      <div class="persona-name">Dr. Priya, 38</div>
+      <div class="persona-role">Clinic Owner, Nagpur</div>
+      <div class="persona-quote">"Half my staff's time is answering the same questions — timings, fees, directions. If a bot could handle that, they could focus on actual patients."</div>
+    </div>
+
+    <div class="persona-card">
+      <span class="persona-emoji">📦</span>
+      <div class="persona-name">Rafiq, 45</div>
+      <div class="persona-role">Customer, Office Worker</div>
+      <div class="persona-quote">"I trust my local shops. I just want to order from them without paying Swiggy's 30% markup. Why is that so hard to do?"</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CAMPAIGNS -->
+<section id="campaigns">
+  <div class="section-label">05 — Marketing Campaigns</div>
+  <h2>Campaigns that<br>move India</h2>
+  <p>Every campaign is built around one truth — small businesses are the heart of India, and they deserve better.</p>
+
+  <div class="campaign-list">
+
+    <div class="campaign-card">
+      <div class="campaign-left">
+        <div class="campaign-num">01</div>
+        <div class="campaign-name">Iska Bhi Hak Hai</div>
+        <div class="campaign-hindi">They deserve it too</div>
+        <div class="campaign-tag">Launch Campaign</div>
+      </div>
+      <div class="campaign-right">
+        <div class="campaign-concept">
+          Real video documentaries of SME owners — a flower seller, a tiffin service, a cycle repair shop — using powerful business tools for the first time. The emotion is <strong>dignity</strong>, not charity. These are entrepreneurs who simply needed the right platform. Film them in their own language, in their own shop.
+        </div>
+        <div class="campaign-line">"63 million businesses. Most of them invisible. Not anymore."</div>
+        <div class="campaign-formats">
+          <span class="format-tag">60-sec documentary films</span>
+          <span class="format-tag">Instagram Reels</span>
+          <span class="format-tag">Regional language cuts</span>
+          <span class="format-tag">YouTube pre-roll</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-left">
+        <div class="campaign-num">02</div>
+        <div class="campaign-name">Bharat Ka Business</div>
+        <div class="campaign-hindi">India's real business</div>
+        <div class="campaign-tag">Brand Film</div>
+      </div>
+      <div class="campaign-right">
+        <div class="campaign-concept">
+          A map of India fills up — not with cities — but with shop names, trade names, local business names lighting up one by one. From Kashmir to Kanyakumari. A tailor in Amritsar. A fishmonger in Kochi. A repair shop in Guwahati. Each dot is a real SME on Sarbat. The country lights up as one.
+        </div>
+        <div class="campaign-line">"From every gali. Every gaon. Every city. This is Bharat's business."</div>
+        <div class="campaign-formats">
+          <span class="format-tag">Hero brand film</span>
+          <span class="format-tag">Investor deck asset</span>
+          <span class="format-tag">State-by-state social cuts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-left">
+        <div class="campaign-num">03</div>
+        <div class="campaign-name">Pehla Din</div>
+        <div class="campaign-hindi">The First Day</div>
+        <div class="campaign-tag">UGC / Viral</div>
+      </div>
+      <div class="campaign-right">
+        <div class="campaign-concept">
+          Every business has a first day. The nervousness, the hope, the first customer walking through the door. Ask SME owners across India to share their <em>pehla din</em> story on social media. Sarbat reposts every single one. Creates massive organic reach while building a deeply emotional community. Hashtag becomes a movement.
+        </div>
+        <div class="campaign-line">"And we're with you for every day after."</div>
+        <div class="campaign-formats">
+          <span class="format-tag">#PehlaDin campaign</span>
+          <span class="format-tag">UGC collection</span>
+          <span class="format-tag">WhatsApp community</span>
+          <span class="format-tag">Free trial trigger</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-left">
+        <div class="campaign-num">04</div>
+        <div class="campaign-name">Sarbat Challenge</div>
+        <div class="campaign-hindi">Tag. Share. Grow.</div>
+        <div class="campaign-tag">Viral Growth</div>
+      </div>
+      <div class="campaign-right">
+        <div class="campaign-concept">
+          Challenge every Indian to tag a small business they love and say one thing they appreciate about them. Every tagged business gets a personal outreach from Sarbat with a free trial offer. Creates massive organic reach, goodwill, and a pipeline of warm leads simultaneously.
+        </div>
+        <div class="campaign-line">"Every tag is a business that deserves to grow. We'll make sure they do."</div>
+        <div class="campaign-formats">
+          <span class="format-tag">#SarbatChallenge</span>
+          <span class="format-tag">Instagram / Twitter</span>
+          <span class="format-tag">Free trial pipeline</span>
+          <span class="format-tag">PR story</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-left">
+        <div class="campaign-num">05</div>
+        <div class="campaign-name">Language No Bar</div>
+        <div class="campaign-hindi">Aap ki bhasha mein</div>
+        <div class="campaign-tag">Product Campaign</div>
+      </div>
+      <div class="campaign-right">
+        <div class="campaign-concept">
+          Show Sarbat working simultaneously in Tamil, Telugu, Marathi, Bengali, Punjabi, and Hindi — side by side on one screen. Same platform. Every language. This directly targets the single biggest pain point of every regional SME — tools that don't speak their language. Pure product-led storytelling.
+        </div>
+        <div class="campaign-line">"Aap ki bhasha mein. Aap ke liye." — In your language. For you.</div>
+        <div class="campaign-formats">
+          <span class="format-tag">Product demo video</span>
+          <span class="format-tag">Regional ad spend</span>
+          <span class="format-tag">Vernacular landing pages</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="campaign-card">
+      <div class="campaign-left">
+        <div class="campaign-num">06</div>
+        <div class="campaign-name">Zero Commission Pledge</div>
+        <div class="campaign-hindi">Ek bhi paisa nahi katenge</div>
+        <div class="campaign-tag">Differentiation</div>
+      </div>
+      <div class="campaign-right">
+        <div class="campaign-concept">
+          A direct attack on the commission model of Swiggy, Zomato, Amazon. Show the math — how much a small business loses to commissions every month — and position Sarbat as the antidote. No commissions. Ever. The merchant keeps everything. Simple, powerful, impossible to ignore.
+        </div>
+        <div class="campaign-line">"They take 30%. We take zero. You keep everything you earn."</div>
+        <div class="campaign-formats">
+          <span class="format-tag">Comparison calculator</span>
+          <span class="format-tag">Performance ads</span>
+          <span class="format-tag">Merchant testimonials</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VISUAL IDENTITY -->
+<div class="identity-section" id="identity">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="section-label" style="color:rgba(255,255,255,0.4);">06 — Visual Identity</div>
+    <h2 style="color:var(--white);">The look<br>of Sarbat</h2>
+
+    <div class="colors-grid">
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#E8650A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Saffron</div>
+          <div class="swatch-hex">#E8650A</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#F5893A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Saffron Light</div>
+          <div class="swatch-hex">#F5893A</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#0D6E6E;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Teal</div>
+          <div class="swatch-hex">#0D6E6E</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#C9901A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gold</div>
+          <div class="swatch-hex">#C9901A</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#0F0E0C;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Night</div>
+          <div class="swatch-hex">#0F0E0C</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch-color" style="background:#F9F5EF;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Cream</div>
+          <div class="swatch-hex">#F9F5EF</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-display">
+      <div class="type-card">
+        <div class="type-label">Display / Headlines</div>
+        <div class="type-sample-display">Sarbat</div>
+        <div class="type-sample-display" style="font-style:italic;color:var(--saffron);">Grows.</div>
+        <div class="type-name">Playfair Display — Bold + Italic</div>
+      </div>
+      <div class="type-card">
+        <div class="type-label">Body / Interface</div>
+        <div class="type-sample-body" style="color:rgba(255,255,255,0.8);font-size:22px;margin-bottom:12px;">Every small business deserves the tools that big businesses take for granted.</div>
+        <div class="type-sample-body">Simple. Direct. In your language.</div>
+        <div class="type-name">DM Sans — Light + Regular</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GTM -->
+<section id="gtm">
+  <div class="section-label">07 — Go-to-Market</div>
+  <h2>How Sarbat<br>reaches India</h2>
+  <p>A phased approach that starts street-level and scales to every corner of the subcontinent.</p>
+
+  <div class="gtm-phases">
+
+    <div class="phase-item">
+      <div class="phase-dot">1</div>
+      <div class="phase-content">
+        <div class="phase-name">Plant the Flag</div>
+        <div class="phase-desc">Launch sarbat.io with a waitlist. Founder-led content on LinkedIn and Instagram telling the story of why Sarbat exists. Target Tier 2 and Tier 3 cities first — that's where the need is most acute and competition is thinnest.</div>
+        <div class="phase-target">🎯 Target: 10,000 waitlist signups</div>
+      </div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-dot">2</div>
+      <div class="phase-content">
+        <div class="phase-name">Community First</div>
+        <div class="phase-desc">Partner with local trade associations, mandis, and SME WhatsApp groups. Run free onboarding workshops in regional languages. Every new merchant gets a QR code starter kit for their shop window. Word of mouth is the growth engine.</div>
+        <div class="phase-target">🎯 Target: First 500 paying SMEs</div>
+      </div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-dot">3</div>
+      <div class="phase-content">
+        <div class="phase-name">Proof of Impact</div>
+        <div class="phase-desc">Document 10 deep SME success stories — filmed, real, emotional. Video testimonials in Tamil, Telugu, Hindi, Marathi, Bengali. Push earned media with the angle: "The startup helping India's invisible businesses." Build credibility for the next phase.</div>
+        <div class="phase-target">🎯 Target: Press coverage + investor interest</div>
+      </div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-dot">4</div>
+      <div class="phase-content">
+        <div class="phase-name">Scale the Network</div>
+        <div class="phase-desc">Launch referral program — "Apne dost ko bhi Sarbat do." Channel partners in every state. Vernacular ad campaigns targeting regional SME groups. The discovery portal creates organic SEO that brings customers to merchants, which brings merchants to Sarbat.</div>
+        <div class="phase-target">🎯 Target: 10,000 active SMEs</div>
+      </div>
+    </div>
+
+    <div class="phase-item">
+      <div class="phase-dot">5</div>
+      <div class="phase-content">
+        <div class="phase-name">Beyond India</div>
+        <div class="phase-desc">WhatsApp-dominant markets — Middle East, Southeast Asia, Africa — face identical problems. The Sarbat model travels perfectly. "Sarbat da Bhala" resonates deeply in Muslim-majority markets where the prayer concept is familiar. Same product, new geographies.</div>
+        <div class="phase-target">🎯 Target: First international market live</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INVESTOR PITCH -->
+<div class="pitch-section" id="pitch">
+  <div class="section-label">08 — Investor Pitch</div>
+  <div class="pitch-text">
+    "Sarbat is the <span>operating system</span> for India's 63 million small businesses — built in every language, priced for every pocket, designed for everyone."
+  </div>
+  <p style="color:rgba(255,255,255,0.5);max-width:600px;margin:0 auto;text-align:center;font-size:16px;">WhatsApp-first. Zero commission. Hyperlocal discovery. The platform that finally puts small businesses in control of their own growth.</p>
+
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-num">63M</div>
+      <div class="stat-label">Small businesses in India</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">500M+</div>
+      <div class="stat-label">WhatsApp users in India</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0%</div>
+      <div class="stat-label">Commission on every order</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">22+</div>
+      <div class="stat-label">Indian languages supported</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOUNDER NOTE -->
+<section>
+  <div class="section-label">09 — Founder Positioning</div>
+  <h2>How you show up<br>as founder</h2>
+
+  <div class="foundation-grid">
+
+    <div class="foundation-card">
+      <div class="card-number">Your Story Angle</div>
+      <div class="card-title">"I didn't build this for Silicon Valley."</div>
+      <div class="card-body">
+        "I built it for the shop on my street. The one that's been there my whole life.
+        The one that deserves the same tools as every big business — but in their language,
+        at their price, on the app they already use."
+      </div>
+    </div>
+
+    <div class="foundation-card">
+      <div class="card-number">Content Pillars</div>
+      <div class="card-title">5 things you post consistently</div>
+      <div class="card-body">
+        <strong>1. SME Stories</strong> — Real owners, real struggles, real wins.<br><br>
+        <strong>2. Behind Sarbat</strong> — Build in public. Share the journey.<br><br>
+        <strong>3. India Insights</strong> — Data on the SME economy.<br><br>
+        <strong>4. Tool Breakdowns</strong> — How Sarbat solves real problems.<br><br>
+        <strong>5. Cultural Connect</strong> — How business works differently state by state.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Sarbat</div>
+    <div class="footer-sub">sarbat.io — Brand Bible v1.0</div>
+  </div>
+  <div class="footer-tagline">
+    <span>Sab ke liye.</span> Sarbat.
+  </div>
+</footer>
+
+</body>
+</html>
