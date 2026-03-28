@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarbat — Ek Ghoonth Lo Campaign</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700;1,9..144,900&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose:    #E8320A;
+    --rose-lt: #FF6B3D;
+    --amber:   #F5A623;
+    --lemon:   #F5E642;
+    --mint:    #2DD4A0;
+    --mint-dk: #0FA07A;
+    --sky:     #56C7F0;
+    --grape:   #8B3FC8;
+    --cream:   #FFF8EE;
+    --paper:   #FDF4E3;
+    --ink:     #1A1208;
+    --stone:   #5C4A30;
+    --dust:    #A89070;
+    --night:   #0C0804;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--night);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 32px;
+  }
+
+  /* animated heat shimmer bg */
+  .hero-heat {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(232,50,10,0.35) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 30% at 20% 60%, rgba(245,166,35,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 40% at 80% 40%, rgba(232,50,10,0.1) 0%, transparent 60%);
+    animation: heatPulse 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes heatPulse {
+    from { opacity: 0.7; transform: scale(1); }
+    to   { opacity: 1;   transform: scale(1.04); }
+  }
+
+  /* floating steam lines */
+  .steam {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 24px;
+    pointer-events: none;
+  }
+
+  .steam-line {
+    width: 2px;
+    height: 120px;
+    background: linear-gradient(180deg, transparent, rgba(255,100,30,0.4), transparent);
+    border-radius: 2px;
+    animation: steamRise 3s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+  .steam-line:nth-child(2) { animation-delay: 0.6s; height: 90px; }
+  .steam-line:nth-child(3) { animation-delay: 1.2s; height: 140px; }
+  .steam-line:nth-child(4) { animation-delay: 0.3s; height: 80px; }
+  .steam-line:nth-child(5) { animation-delay: 0.9s; height: 110px; }
+
+  @keyframes steamRise {
+    0%   { opacity: 0; transform: translateY(0) scaleX(1); }
+    50%  { opacity: 0.8; }
+    100% { opacity: 0; transform: translateY(-140px) scaleX(1.5); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 32px;
+    position: relative;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-temp {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(100px, 18vw, 220px);
+    font-weight: 900;
+    line-height: 0.85;
+    color: var(--rose);
+    position: relative;
+    margin-bottom: 0;
+    animation: fadeUp 0.7s 0.1s ease both;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-temp sup {
+    font-size: 0.35em;
+    vertical-align: super;
+    color: var(--amber);
+  }
+
+  .hero-market-line {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(18px, 4vw, 42px);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 48px;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  .hero-divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--rose), var(--amber));
+    margin: 0 auto 48px;
+    animation: fadeUp 0.7s 0.25s ease both;
+  }
+
+  .hero-glass {
+    font-size: 80px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.7s 0.3s ease both, float 3s ease-in-out infinite;
+    display: block;
+    line-height: 1;
+    filter: drop-shadow(0 0 30px rgba(45,212,160,0.5));
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .hero-headline {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 6vw, 72px);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.05;
+    margin-bottom: 16px;
+    animation: fadeUp 0.7s 0.35s ease both;
+    max-width: 800px;
+  }
+
+  .hero-headline .cool { color: var(--mint); }
+  .hero-headline .heat { color: var(--rose-lt); }
+
+  .hero-sub {
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+    max-width: 560px;
+    margin-bottom: 56px;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--mint), var(--sky));
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    padding: 16px 40px;
+    border-radius: 100px;
+    text-decoration: none;
+    animation: fadeUp 0.7s 0.45s ease both;
+    box-shadow: 0 8px 32px rgba(45,212,160,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(45,212,160,0.45);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION BASE ── */
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+
+  .sec { padding: 100px 0; }
+
+  .sec-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sec-label::after { content:''; display:block; width:32px; height:1px; background:var(--rose); }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  p.lead {
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--stone);
+    max-width: 620px;
+  }
+
+  /* ── THE BIG IDEA ── */
+  .idea-section {
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .idea-section::before {
+    content: '🥤';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 320px;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .idea-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-top: 64px;
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .idea-half {
+    padding: 56px 48px;
+    position: relative;
+  }
+
+  .idea-half.hot {
+    background: var(--rose);
+  }
+
+  .idea-half.cool {
+    background: var(--mint);
+  }
+
+  .idea-half-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 20px;
+  }
+
+  .idea-half.cool .idea-half-label { color: rgba(10,50,30,0.5); }
+
+  .idea-half-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .idea-half.cool .idea-half-title { color: var(--ink); }
+
+  .idea-half-body {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.8);
+    max-width: 100%;
+  }
+
+  .idea-half.cool .idea-half-body { color: rgba(10,40,25,0.7); }
+
+  .idea-half-icon {
+    font-size: 56px;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  /* ── CAMPAIGN HERO LINE ── */
+  .campaign-hero {
+    background: var(--night);
+    padding: 100px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .campaign-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(45,212,160,0.08) 0%, transparent 70%);
+  }
+
+  .big-campaign-line {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 5vw, 64px);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.15;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .big-campaign-line .highlight-rose { color: var(--rose-lt); font-style: italic; }
+  .big-campaign-line .highlight-mint { color: var(--mint); font-style: italic; }
+  .big-campaign-line .highlight-amber { color: var(--amber); }
+
+  .campaign-variants {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 48px;
+    position: relative;
+  }
+
+  .variant-pill {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    padding: 10px 24px;
+    border-radius: 100px;
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .variant-pill:hover {
+    background: rgba(45,212,160,0.12);
+    border-color: rgba(45,212,160,0.3);
+    color: var(--mint);
+    transform: translateY(-2px);
+  }
+
+  .variant-pill.hero-pill {
+    background: var(--mint);
+    border-color: var(--mint);
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ── AD CONCEPTS ── */
+  .ads-section { background: var(--cream); }
+
+  .ads-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+  }
+
+  .ad-card {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 4/5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.3s;
+    cursor: default;
+  }
+
+  .ad-card:hover { transform: translateY(-8px) scale(1.01); }
+
+  .ad-card-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 120px;
+  }
+
+  .ad-card.red-heat .ad-card-bg { background: linear-gradient(160deg, #1a0800 0%, var(--rose) 100%); }
+  .ad-card.mint-cool .ad-card-bg { background: linear-gradient(160deg, #001a12 0%, var(--mint-dk) 100%); }
+  .ad-card.amber-warm .ad-card-bg { background: linear-gradient(160deg, #1a0d00 0%, var(--amber) 100%); }
+  .ad-card.sky-fresh .ad-card-bg { background: linear-gradient(160deg, #00101a 0%, var(--sky) 100%); }
+  .ad-card.grape-bold .ad-card-bg { background: linear-gradient(160deg, #0d0014 0%, var(--grape) 100%); }
+  .ad-card.lemon-zap .ad-card-bg { background: linear-gradient(160deg, #1a1800 0%, #c8b800 100%); }
+
+  .ad-card-content {
+    position: relative;
+    z-index: 2;
+    padding: 24px;
+    background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
+  }
+
+  .ad-card-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 8px;
+  }
+
+  .ad-card-headline {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .ad-card-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+
+  /* ── HEAT → COOL VISUAL ── */
+  .thermometer-section {
+    background: var(--night);
+    padding: 100px 48px;
+    overflow: hidden;
+  }
+
+  .thermo-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .thermo-side {
+    padding: 48px;
+    border-radius: 20px;
+  }
+
+  .thermo-side.before {
+    background: rgba(232,50,10,0.1);
+    border: 1px solid rgba(232,50,10,0.2);
+  }
+
+  .thermo-side.after {
+    background: rgba(45,212,160,0.08);
+    border: 1px solid rgba(45,212,160,0.2);
+  }
+
+  .thermo-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .thermo-side.before .thermo-label { color: var(--rose-lt); }
+  .thermo-side.after .thermo-label { color: var(--mint); }
+
+  .thermo-title {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .thermo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .thermo-list li {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .thermo-list li span {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .thermo-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .arrow-glass { font-size: 48px; animation: float 2.5s ease-in-out infinite; }
+
+  .arrow-line {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    color: var(--mint);
+  }
+
+  /* ── SARBAT FLAVORS → FEATURES ── */
+  .flavors-section { background: var(--paper); }
+
+  .flavors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 64px;
+  }
+
+  .flavor-card {
+    background: white;
+    border-radius: 20px;
+    padding: 36px 28px;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .flavor-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  .flavor-card.rose::after { background: linear-gradient(90deg, var(--rose), var(--amber)); }
+  .flavor-card.mint::after { background: linear-gradient(90deg, var(--mint), var(--sky)); }
+  .flavor-card.amber::after { background: linear-gradient(90deg, var(--amber), var(--lemon)); }
+  .flavor-card.sky::after { background: linear-gradient(90deg, var(--sky), var(--mint)); }
+  .flavor-card.grape::after { background: linear-gradient(90deg, var(--grape), var(--rose)); }
+  .flavor-card.lemon::after { background: linear-gradient(90deg, #c8b800, var(--amber)); }
+
+  .flavor-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.1);
+  }
+
+  .flavor-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+
+  .flavor-name {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .flavor-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dust);
+    margin-bottom: 16px;
+  }
+
+  .flavor-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--stone);
+  }
+
+  /* ── SCRIPT / SOCIAL ── */
+  .social-section { background: var(--night); padding: 100px 48px; }
+
+  .social-wrap { max-width: 1200px; margin: 0 auto; }
+
+  .social-section .sec-label { color: var(--mint); }
+  .social-section .sec-label::after { background: var(--mint); }
+  .social-section h2 { color: white; }
+  .social-section p.lead { color: rgba(255,255,255,0.5); }
+
+  .script-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 64px;
+  }
+
+  .script-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    padding: 40px;
+    transition: border-color 0.3s;
+  }
+
+  .script-card:hover { border-color: rgba(45,212,160,0.25); }
+
+  .script-format {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mint);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .script-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .script-body {
+    font-size: 14px;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .script-body strong { color: rgba(255,255,255,0.85); }
+  .script-body em { color: var(--mint); font-style: normal; }
+
+  .script-line {
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid var(--mint);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-top: 20px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: white;
+    line-height: 1.4;
+  }
+
+  /* ── THE METAPHOR MAP ── */
+  .metaphor-section { background: var(--cream); }
+
+  .metaphor-table {
+    margin-top: 64px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .metaphor-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: var(--ink);
+    padding: 20px 32px;
+  }
+
+  .metaphor-header span {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .metaphor-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 20px 32px;
+    background: white;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    align-items: center;
+    transition: background 0.2s;
+  }
+
+  .metaphor-row:hover { background: var(--paper); }
+  .metaphor-row:last-child { border-bottom: none; }
+
+  .metaphor-drink {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .metaphor-arrow-cell {
+    font-size: 18px;
+    color: var(--rose);
+    text-align: center;
+  }
+
+  .metaphor-feature {
+    font-size: 14px;
+    color: var(--stone);
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: linear-gradient(160deg, var(--night) 0%, #0a1f18 100%);
+    padding: 140px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(45,212,160,0.15) 0%, transparent 70%);
+  }
+
+  .closing-glass {
+    font-size: 100px;
+    display: block;
+    margin-bottom: 40px;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 40px rgba(45,212,160,0.5));
+    position: relative;
+  }
+
+  .closing-headline {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 6vw, 80px);
+    font-weight: 900;
+    color: white;
+    line-height: 1.05;
+    max-width: 800px;
+    margin: 0 auto 24px;
+    position: relative;
+  }
+
+  .closing-headline .cool { color: var(--mint); font-style: italic; }
+
+  .closing-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.4);
+    max-width: 480px;
+    margin: 0 auto 56px;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .closing-url {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 900;
+    font-style: italic;
+    color: var(--mint);
+    position: relative;
+    letter-spacing: -0.01em;
+  }
+
+  .closing-tagline {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    margin-top: 16px;
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    .wrap { padding: 0 24px; }
+    .idea-grid { grid-template-columns: 1fr; }
+    .ads-grid { grid-template-columns: 1fr 1fr; }
+    .flavors-grid { grid-template-columns: 1fr 1fr; }
+    .script-cards { grid-template-columns: 1fr; }
+    .thermo-wrap { grid-template-columns: 1fr; }
+    .thermo-arrow { display: none; }
+    .metaphor-section { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-heat"></div>
+  <div class="steam">
+    <div class="steam-line"></div>
+    <div class="steam-line"></div>
+    <div class="steam-line"></div>
+    <div class="steam-line"></div>
+    <div class="steam-line"></div>
+  </div>
+
+  <div class="hero-eyebrow">Campaign Concept — Sarbat.io</div>
+  <div class="hero-temp">42<sup>°C</sup></div>
+  <div class="hero-market-line">The market is on fire.</div>
+  <div class="hero-divider"></div>
+  <span class="hero-glass">🥤</span>
+  <h1 class="hero-headline">
+    <span class="cool">Cool down.</span><br>
+    Take a glass of <span class="heat">Sarbat.</span>
+  </h1>
+  <p class="hero-sub">
+    When every competitor is burning you, every customer is demanding more,
+    and every tool is making your life harder — one sip changes everything.
+  </p>
+  <a href="#idea" class="hero-cta">Explore the Campaign ↓</a>
+</div>
+
+<!-- THE BIG IDEA -->
+<div class="idea-section sec" id="idea">
+  <div class="wrap">
+    <div class="sec-label">The Big Idea</div>
+    <h2>Two meanings.<br>One perfect name.</h2>
+    <p class="lead">Sarbat the drink has cooled India's summers for centuries. Sarbat the platform cools the heat of India's business world. Same word. Same relief. Same feeling.</p>
+
+    <div class="idea-grid">
+      <div class="idea-half hot">
+        <span class="idea-half-icon">🔥</span>
+        <div class="idea-half-label">Without Sarbat</div>
+        <div class="idea-half-title">The market is a scorching 42°C afternoon.</div>
+        <div class="idea-half-body">
+          Missed orders. Unanswered WhatsApp messages. Zero idea what's selling. Staff overwhelmed. Customers going to Swiggy. Commission eating your margins. You're sweating just thinking about it.
+        </div>
+      </div>
+      <div class="idea-half cool">
+        <span class="idea-half-icon">🥤</span>
+        <div class="idea-half-label">With Sarbat</div>
+        <div class="idea-half-title">One sip and the whole market cools down.</div>
+        <div class="idea-half-body">
+          Orders handled automatically. WhatsApp bot answers everything. Inventory always updated. Customers ordering directly. Zero commission. You're actually running your business — not drowning in it.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO CAMPAIGN LINE -->
+<div class="campaign-hero">
+  <div class="sec-label" style="justify-content:center;color:rgba(255,255,255,0.35);">Hero Campaign Line</div>
+  <div class="big-campaign-line">
+    "The market is <span class="highlight-rose">heating up.</span><br>
+    Time for a glass of <span class="highlight-mint">Sarbat.</span>"
+  </div>
+
+  <div class="campaign-variants">
+    <div class="variant-pill hero-pill">🥤 Ek Ghoonth Lo. Business Badhaao.</div>
+    <div class="variant-pill">Market garam hai. Sarbat pi lo.</div>
+    <div class="variant-pill">Cool business. Hot results.</div>
+    <div class="variant-pill">Taaza lo. Tej chalo.</div>
+    <div class="variant-pill">Thanda rakho. Aage badho.</div>
+    <div class="variant-pill">Sip. Sell. Succeed.</div>
+    <div class="variant-pill">Refreshingly simple business.</div>
+  </div>
+</div>
+
+<!-- AD CONCEPTS -->
+<div class="ads-section sec">
+  <div class="wrap">
+    <div class="sec-label">Visual Ad Concepts</div>
+    <h2>Six ads.<br>Six flavours.</h2>
+    <p class="lead">Each ad targets a different SME segment — same brand, different flavour of relief.</p>
+
+    <div class="ads-grid">
+
+      <div class="ad-card red-heat">
+        <div class="ad-card-bg">🌶️</div>
+        <div class="ad-card-content">
+          <div class="ad-card-tag">Kirana / Grocery</div>
+          <div class="ad-card-headline">"40 WhatsApp messages before chai."</div>
+          <div class="ad-card-sub">Sarbat answers them all. You enjoy your morning.</div>
+        </div>
+      </div>
+
+      <div class="ad-card mint-cool">
+        <div class="ad-card-bg">🥤</div>
+        <div class="ad-card-content">
+          <div class="ad-card-tag">The Relief</div>
+          <div class="ad-card-headline">"Ek ghoonth lo. Sab thanda."</div>
+          <div class="ad-card-sub">One sip of Sarbat. Everything cools down.</div>
+        </div>
+      </div>
+
+      <div class="ad-card amber-warm">
+        <div class="ad-card-bg">☕</div>
+        <div class="ad-card-content">
+          <div class="ad-card-tag">Café / Restaurant</div>
+          <div class="ad-card-headline">"Peak hour. Zero panic."</div>
+          <div class="ad-card-sub">Sarbat bot handles orders while your team focuses on the food.</div>
+        </div>
+      </div>
+
+      <div class="ad-card sky-fresh">
+        <div class="ad-card-bg">💈</div>
+        <div class="ad-card-content">
+          <div class="ad-card-tag">Salon / Services</div>
+          <div class="ad-card-headline">"They book. You cut. Sarbat handles the rest."</div>
+          <div class="ad-card-sub">Appointments, FAQs, reminders — all on WhatsApp.</div>
+        </div>
+      </div>
+
+      <div class="ad-card grape-bold">
+        <div class="ad-card-bg">🏥</div>
+        <div class="ad-card-content">
+          <div class="ad-card-tag">Clinic / Doctor</div>
+          <div class="ad-card-headline">"Your staff answers. Or Sarbat does."</div>
+          <div class="ad-card-sub">Timings, fees, directions — automated. Always.</div>
+        </div>
+      </div>
+
+      <div class="ad-card lemon-zap">
+        <div class="ad-card-bg">📦</div>
+        <div class="ad-card-content">
+          <div class="ad-card-tag">Retail / Any SME</div>
+          <div class="ad-card-headline">"Swiggy takes 30%. Sarbat takes zero."</div>
+          <div class="ad-card-sub">Direct orders. Full margin. Your business, your rules.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- HEAT → COOL -->
+<div class="thermometer-section">
+  <div class="thermo-wrap">
+    <div class="thermo-side before">
+      <div class="thermo-label">🌡️ Before Sarbat</div>
+      <div class="thermo-title">The market is burning you alive.</div>
+      <ul class="thermo-list">
+        <li><span>🔥</span> 40+ WhatsApp messages every morning unanswered</li>
+        <li><span>🔥</span> No idea what's in stock, what's selling, what's not</li>
+        <li><span>🔥</span> Swiggy and Zomato taking 25–30% of every order</li>
+        <li><span>🔥</span> Staff overwhelmed answering the same questions</li>
+        <li><span>🔥</span> Customers going elsewhere because you can't respond fast</li>
+        <li><span>🔥</span> Running your business like it's still 1995</li>
+      </ul>
+    </div>
+
+    <div class="thermo-arrow">
+      <span class="arrow-glass">🥤</span>
+      <div class="arrow-line">→</div>
+    </div>
+
+    <div class="thermo-side after">
+      <div class="thermo-label">❄️ After Sarbat</div>
+      <div class="thermo-title">Cool. Calm. In control.</div>
+      <ul class="thermo-list">
+        <li><span>✅</span> WhatsApp bot answers everything — 24/7, in their language</li>
+        <li><span>✅</span> Real-time inventory, bestsellers, daily reports on your phone</li>
+        <li><span>✅</span> Zero commission — every rupee stays with you</li>
+        <li><span>✅</span> Staff focused on real work, not repetitive replies</li>
+        <li><span>✅</span> Customers ordering directly, faster, happier</li>
+        <li><span>✅</span> Running like the big businesses — at your price</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SARBAT FLAVOURS = FEATURES -->
+<div class="flavors-section sec">
+  <div class="wrap">
+    <div class="sec-label">Platform Features as Flavours</div>
+    <h2>Every flavour<br>of Sarbat.</h2>
+    <p class="lead">Just like a good Sarbat comes in many flavours, Sarbat the platform comes in many features — each one designed to cool a specific business pain.</p>
+
+    <div class="flavors-grid">
+
+      <div class="flavor-card rose">
+        <span class="flavor-icon">🤖</span>
+        <div class="flavor-name">WhatsApp Bot</div>
+        <div class="flavor-type">The Original Sarbat — Rose Sherbet</div>
+        <div class="flavor-desc">Classic. Timeless. The one that started it all. Your bot handles orders, answers FAQs, and manages catalogs — cool and smooth.</div>
+      </div>
+
+      <div class="flavor-card mint">
+        <span class="flavor-icon">📦</span>
+        <div class="flavor-name">Inventory Manager</div>
+        <div class="flavor-type">Mint Sarbat — Fresh and sharp</div>
+        <div class="flavor-desc">Real-time stock tracking. Auto-deductions. Low-stock alerts. As refreshing as the first sip on a hot afternoon.</div>
+      </div>
+
+      <div class="flavor-card amber">
+        <span class="flavor-icon">🗺️</span>
+        <div class="flavor-name">Hyperlocal Discovery</div>
+        <div class="flavor-type">Aam Panna — Everyone's favourite</div>
+        <div class="flavor-desc">Your shop appears on the map when nearby customers search. No app. No signup. Just tap and WhatsApp you directly.</div>
+      </div>
+
+      <div class="flavor-card sky">
+        <span class="flavor-icon">📊</span>
+        <div class="flavor-name">Business Dashboard</div>
+        <div class="flavor-type">Nimbu Sarbat — Clear and bright</div>
+        <div class="flavor-desc">Orders, revenue, bestsellers, customer data — all in one screen. Crystal clear. No confusion. Just facts that help you grow.</div>
+      </div>
+
+      <div class="flavor-card grape">
+        <span class="flavor-icon">💬</span>
+        <div class="flavor-name">Multi-language Support</div>
+        <div class="flavor-type">Mix Fruit Sarbat — A bit of everything</div>
+        <div class="flavor-desc">Tamil, Telugu, Hindi, Marathi, Bengali, Punjabi. Your customers speak differently. Sarbat speaks all of them.</div>
+      </div>
+
+      <div class="flavor-card lemon">
+        <span class="flavor-icon">👥</span>
+        <div class="flavor-name">Customer CRM</div>
+        <div class="flavor-type">Kesar Sarbat — Premium and golden</div>
+        <div class="flavor-desc">Remember repeat customers. Automate reorder reminders. Build loyalty without lifting a finger. Pure gold.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SOCIAL SCRIPTS -->
+<div class="social-section">
+  <div class="social-wrap">
+    <div class="sec-label">Campaign Scripts & Social Ads</div>
+    <h2 style="color:white;">The words<br>that sell it.</h2>
+    <p class="lead">Ready-to-run scripts for video, social, and WhatsApp campaigns.</p>
+
+    <div class="script-cards">
+
+      <div class="script-card">
+        <div class="script-format">📱 Instagram Reel — 30 sec</div>
+        <div class="script-title">The Summer Ad</div>
+        <div class="script-body">
+          <strong>VISUAL:</strong> A busy street. 42°C on screen. A shopkeeper drenched in sweat, phone buzzing non-stop with WhatsApp messages.<br><br>
+          <strong>VO:</strong> "Garmi mein sab kuch paighalta hai. Makkhan. Dil. Aur teri patience."<br><br>
+          <strong>CUT TO:</strong> Same shopkeeper. Calm. Fan on. Glass of cold Sarbat in hand. Phone shows bot auto-replying to every message.<br><br>
+          <strong>VO:</strong> "Sarbat pi. Business chhod do bot par."<br><br>
+          <em>End card: sarbat.io — Sab ke liye.</em>
+        </div>
+        <div class="script-line">"Garmi mein business? Sarbat pi lo."</div>
+      </div>
+
+      <div class="script-card">
+        <div class="script-format">🎬 YouTube Pre-roll — 15 sec</div>
+        <div class="script-title">The Skip This Ad</div>
+        <div class="script-body">
+          <strong>OPEN:</strong> Close-up of a cold glass of Sarbat. Condensation dripping. Satisfying sound.<br><br>
+          <strong>VO:</strong> "You can skip this ad..."<br><br>
+          <strong>CUT TO:</strong> Shop owner's phone blowing up with 47 unread WhatsApp messages.<br><br>
+          <strong>VO:</strong> "...but can you skip this?"<br><br>
+          <strong>VO:</strong> "Sarbat handles it all. On WhatsApp. Zero commission."<br><br>
+          <em>sarbat.io</em>
+        </div>
+        <div class="script-line">"You can skip this ad. Can you skip 47 WhatsApps?"</div>
+      </div>
+
+      <div class="script-card">
+        <div class="script-format">📣 WhatsApp Broadcast Campaign</div>
+        <div class="script-title">Sent to Local SME Groups</div>
+        <div class="script-body">
+          <em>🥤 Ek sawaal:</em><br><br>
+          <strong>Is garmi mein aap kitne WhatsApp messages answer karte ho?</strong><br><br>
+          Ramesh (grocery, Nashik): 40+ per day 😓<br>
+          Anjali (café, Pune): 60+ per day 😭<br>
+          Suresh (salon, Chennai): 35+ per day 🤦‍♂️<br><br>
+          Sarbat bot sabke liye answer karta hai.<br>
+          Aap enjoy karo apna Sarbat. ☕<br><br>
+          <em>Free shuru karo → sarbat.io</em>
+        </div>
+        <div class="script-line">"Bot kaam kare. Aap Sarbat piyo."</div>
+      </div>
+
+      <div class="script-card">
+        <div class="script-format">🐦 Twitter / X Thread Opener</div>
+        <div class="script-title">The Viral Hook</div>
+        <div class="script-body">
+          <strong>Tweet 1:</strong> "India mein 63 million small businesses hain. Sab WhatsApp use karte hain. Koi bhi unke liye kuch nahi bana. 🧵"<br><br>
+          <strong>Tweet 2:</strong> "Ek kirana uncle subah 5 baje se phone pe hain. Tomatoes available hai kya? Onions kitne? Delivery hogi? Same questions. 40 baar."<br><br>
+          <strong>Tweet 3:</strong> "Unhe Salesforce nahi chahiye. Swiggy nahi chahiye. Ek thanda glass of Sarbat chahiye. 🥤"<br><br>
+          <em>That's what we built. sarbat.io</em>
+        </div>
+        <div class="script-line">"Unhe thanda glass of Sarbat chahiye. Woh hum hain."</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- METAPHOR MAP -->
+<div class="metaphor-section sec">
+  <div class="wrap">
+    <div class="sec-label">The Metaphor in Full</div>
+    <h2>Sarbat the drink<br>= Sarbat the platform</h2>
+    <p class="lead">Every quality of the drink maps perfectly to a quality of the platform. This is not forced. This is fate.</p>
+
+    <div class="metaphor-table">
+      <div class="metaphor-header">
+        <span>Sarbat the Drink 🥤</span>
+        <span></span>
+        <span>Sarbat the Platform 💼</span>
+      </div>
+      <div class="metaphor-row">
+        <div class="metaphor-drink">❄️ Instantly refreshing</div>
+        <div class="metaphor-arrow-cell">→</div>
+        <div class="metaphor-feature">Set up your WhatsApp bot in minutes — instant relief</div>
+      </div>
+      <div class="metaphor-row">
+        <div class="metaphor-drink">🌸 Made from natural ingredients</div>
+        <div class="metaphor-arrow-cell">→</div>
+        <div class="metaphor-feature">Built from WhatsApp — a tool that already exists naturally in every SME's life</div>
+      </div>
+      <div class="metaphor-row">
+        <div class="metaphor-drink">🎨 Comes in many flavours</div>
+        <div class="metaphor-arrow-cell">→</div>
+        <div class="metaphor-feature">Works for every type of SME — grocery, salon, clinic, café, retail</div>
+      </div>
+      <div class="metaphor-row">
+        <div class="metaphor-drink">💰 Affordable for everyone</div>
+        <div class="metaphor-arrow-cell">→</div>
+        <div class="metaphor-feature">SaaS pricing that every small business can actually afford</div>
+      </div>
+      <div class="metaphor-row">
+        <div class="metaphor-drink">🤲 Shared with everyone</div>
+        <div class="metaphor-arrow-cell">→</div>
+        <div class="metaphor-feature">Sarbat da Bhala — prosperity for all, no business left behind</div>
+      </div>
+      <div class="metaphor-row">
+        <div class="metaphor-drink">☀️ Made for Indian summers</div>
+        <div class="metaphor-arrow-cell">→</div>
+        <div class="metaphor-feature">Made for the Indian market — in every language, for every culture</div>
+      </div>
+      <div class="metaphor-row">
+        <div class="metaphor-drink">🏠 Made at home, not in a factory</div>
+        <div class="metaphor-arrow-cell">→</div>
+        <div class="metaphor-feature">Built by Indians who understand the street-level reality of SMEs</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <span class="closing-glass">🥤</span>
+  <h2 class="closing-headline">
+    The market will always<br>be <span class="cool">hot.</span><br>
+    You don't have to be.
+  </h2>
+  <p class="closing-sub">
+    Take a glass of Sarbat. Let the bot handle the heat.
+    Watch your business grow — cool, calm, and unstoppable.
+  </p>
+  <div class="closing-url">sarbat.io</div>
+  <div class="closing-tagline">Ek Ghoonth Lo. Business Badhaao. — Sab ke liye.</div>
+</div>
+
+</body>
+</html>
