@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pakoda — Brand & Marketing Bible</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700;1,900&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --chilli:    #D63A1A;
+    --turmeric:  #E8A10A;
+    --turmeric-light: #F5C842;
+    --mustard:   #C4830A;
+    --chai:      #7A4E2D;
+    --chai-dark: #3D2010;
+    --smoke:     #1A1410;
+    --ink:       #2A1F14;
+    --stone:     #6B5744;
+    --dust:      #A0876F;
+    --cream:     #FAF5EE;
+    --paper:     #F4EDE0;
+    --white:     #FDFAF6;
+    --green:     #2D6A4F;
+    --green-light: #40916C;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Instrument Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 99;
+    background: var(--smoke);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 58px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--turmeric);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-tagline {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .nav-links {
+    display: flex; gap: 28px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--turmeric-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--smoke);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 48px 80px;
+    gap: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,161,10,0.12) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+
+  .hero-glow-2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(214,58,26,0.08) 0%, transparent 70%);
+    bottom: -50px; left: 100px;
+    pointer-events: none;
+  }
+
+  .hero-left { position: relative; }
+
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(232,161,10,0.1);
+    border: 1px solid rgba(232,161,10,0.2);
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 40px;
+  }
+
+  .hero-kicker span {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--turmeric-light);
+  }
+
+  .hero-kicker-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--turmeric);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(80px, 11vw, 148px);
+    color: var(--white);
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--turmeric);
+    display: block;
+  }
+
+  .hero-sub {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--dust);
+    margin-bottom: 48px;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.5);
+    max-width: 440px;
+    margin-bottom: 48px;
+    font-weight: 400;
+  }
+
+  .hero-desc strong { color: var(--turmeric-light); font-weight: 600; }
+
+  .hero-pill-row {
+    display: flex; flex-wrap: wrap; gap: 10px;
+  }
+
+  .hero-pill {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.04em;
+  }
+
+  .hero-right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* WHATSAPP MOCK */
+  .wa-phone {
+    background: #111B21;
+    border-radius: 28px;
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 0;
+    overflow: hidden;
+    max-width: 340px;
+    margin: 0 auto;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  }
+
+  .wa-header {
+    background: #1F2C34;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .wa-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--turmeric), var(--chilli));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+
+  .wa-name {
+    font-size: 14px; font-weight: 600;
+    color: #E9EDEF;
+  }
+
+  .wa-status {
+    font-size: 11px; color: #8696A0;
+  }
+
+  .wa-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 360px;
+  }
+
+  .wa-msg {
+    max-width: 80%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .wa-msg-in {
+    background: #1F2C34;
+    color: #E9EDEF;
+    align-self: flex-start;
+    border-radius: 0 8px 8px 8px;
+  }
+
+  .wa-msg-out {
+    background: #005C4B;
+    color: #E9EDEF;
+    align-self: flex-end;
+    border-radius: 8px 0 8px 8px;
+  }
+
+  .wa-time {
+    font-size: 10px;
+    color: #8696A0;
+    text-align: right;
+    margin-top: 4px;
+  }
+
+  .wa-bot-tag {
+    font-size: 10px;
+    color: var(--turmeric);
+    margin-bottom: 4px;
+    display: block;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 120px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-dark {
+    background: var(--smoke);
+    padding: 120px 48px;
+  }
+
+  .section-paper {
+    background: var(--paper);
+    padding: 120px 48px;
+  }
+
+  .section-chilli {
+    background: var(--chilli);
+    padding: 120px 48px;
+  }
+
+  .section-turmeric {
+    background: var(--turmeric);
+    padding: 120px 48px;
+  }
+
+  .inner { max-width: 1200px; margin: 0 auto; }
+
+  .label {
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--turmeric);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+  .label::after {
+    content: ''; display: block;
+    width: 32px; height: 1px;
+    background: var(--turmeric);
+  }
+
+  .label-light { color: rgba(255,255,255,0.4); }
+  .label-light::after { background: rgba(255,255,255,0.2); }
+
+  .label-dark { color: rgba(255,255,255,0.5); }
+  .label-dark::after { background: rgba(255,255,255,0.3); }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: clamp(36px, 5vw, 68px);
+    line-height: 1.0;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+  }
+
+  h2 em { font-style: italic; color: var(--turmeric); }
+
+  h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: clamp(20px, 2.5vw, 28px);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  p.lead {
+    font-size: 18px; line-height: 1.75;
+    color: var(--stone); max-width: 640px;
+    margin-bottom: 0;
+  }
+
+  /* DIVIDER */
+  hr {
+    border: none;
+    border-top: 1px solid rgba(74,56,40,0.1);
+    margin: 0 48px;
+  }
+
+  /* WHY PAKODA */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+    background: rgba(74,56,40,0.08);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .why-card {
+    background: var(--white);
+    padding: 40px 32px;
+    transition: background 0.3s;
+    position: relative;
+  }
+
+  .why-card:hover { background: var(--paper); }
+
+  .why-icon {
+    font-size: 32px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .why-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .why-body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--stone);
+  }
+
+  /* TAGLINES DARK */
+  .tagline-stack {
+    margin-top: 64px;
+  }
+
+  .tl-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    cursor: default;
+    position: relative;
+    transition: padding-left 0.3s;
+  }
+
+  .tl-row:hover { padding-left: 16px; }
+  .tl-row:hover .tl-main { color: var(--turmeric-light); }
+
+  .tl-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 0.1em;
+    min-width: 28px;
+  }
+
+  .tl-main {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(18px, 3vw, 38px);
+    font-weight: 700;
+    color: var(--white);
+    flex: 1;
+    line-height: 1.2;
+    transition: color 0.3s;
+  }
+
+  .tl-badge {
+    background: rgba(232,161,10,0.15);
+    border: 1px solid rgba(232,161,10,0.3);
+    color: var(--turmeric-light);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .tl-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    min-width: 160px;
+    text-align: right;
+    font-style: italic;
+  }
+
+  /* BRAND STORY */
+  .story-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .story-big-char {
+    position: absolute;
+    font-family: 'Fraunces', serif;
+    font-size: 500px;
+    font-weight: 900;
+    font-style: italic;
+    color: rgba(0,0,0,0.07);
+    top: -80px; right: -40px;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .story-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .story-p {
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.75;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  .story-p strong { color: var(--white); font-weight: 600; }
+  .story-p em { color: var(--turmeric-light); font-style: italic; }
+
+  .story-closer {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 900;
+    font-style: italic;
+    color: var(--white);
+    margin-top: 48px;
+    line-height: 1.2;
+  }
+
+  .story-closer span { color: var(--turmeric); }
+
+  /* CAMPAIGNS */
+  .campaigns-list {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .camp {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+    border-top: 1px solid rgba(74,56,40,0.1);
+    padding: 56px 0;
+    align-items: start;
+    transition: background 0.3s;
+    position: relative;
+  }
+
+  .camp:last-child { border-bottom: 1px solid rgba(74,56,40,0.1); }
+
+  .camp-left {}
+
+  .camp-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 64px;
+    font-weight: 500;
+    color: var(--paper);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .camp-title {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+
+  .camp-hindi {
+    font-size: 13px;
+    color: var(--dust);
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+
+  .camp-type {
+    display: inline-block;
+    background: var(--turmeric);
+    color: var(--smoke);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  .camp-right {
+    padding-left: 48px;
+    border-left: 1px solid rgba(74,56,40,0.08);
+  }
+
+  .camp-concept {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--stone);
+    margin-bottom: 24px;
+  }
+
+  .camp-line {
+    background: var(--smoke);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 20px 24px;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.45;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--turmeric);
+  }
+
+  .camp-formats {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+
+  .fmt {
+    background: rgba(74,56,40,0.07);
+    color: var(--stone);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.03em;
+  }
+
+  /* SOCIAL PLAYBOOK */
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .social-card {
+    border-radius: 16px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sc-ig { background: linear-gradient(135deg, #E1306C, #833AB4); }
+  .sc-fb { background: #1877F2; }
+  .sc-wa { background: #25D366; }
+  .sc-li { background: #0A66C2; }
+
+  .social-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+
+  .social-name {
+    font-size: 13px; font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .social-role {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+  }
+
+  .social-freq {
+    margin-top: 16px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.06em;
+  }
+
+  /* CONTENT PILLARS */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 48px;
+  }
+
+  .pillar {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px 20px;
+    border: 1px solid rgba(74,56,40,0.08);
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .pillar:hover {
+    border-color: var(--turmeric);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(232,161,10,0.12);
+  }
+
+  .pillar-emoji { font-size: 32px; display: block; margin-bottom: 14px; }
+
+  .pillar-name {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .pillar-desc {
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--dust);
+  }
+
+  /* GTM PHASES */
+  .phases {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .phases::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--turmeric), var(--chilli));
+  }
+
+  .phase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 12px;
+    padding-top: 0;
+  }
+
+  .phase-dot {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 3px solid var(--turmeric);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--turmeric);
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .phase-title {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .phase-desc {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--stone);
+    margin-bottom: 12px;
+  }
+
+  .phase-kpi {
+    font-size: 11px;
+    color: var(--chilli);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  /* VISUAL IDENTITY */
+  .colors-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+
+  .swatch {
+    flex: 1;
+    min-width: 120px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .swatch-top {
+    height: 72px;
+  }
+
+  .swatch-info {
+    padding: 12px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .swatch-n {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+  }
+
+  .swatch-h {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .swatch-role {
+    font-size: 10px;
+    color: rgba(255,255,255,0.2);
+    margin-top: 3px;
+    letter-spacing: 0.04em;
+  }
+
+  .type-examples {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .type-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 36px;
+  }
+
+  .type-lbl {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 20px;
+  }
+
+  .type-big {
+    font-family: 'Fraunces', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 0.95;
+    margin-bottom: 6px;
+  }
+
+  .type-big em {
+    font-style: italic;
+    color: var(--turmeric);
+  }
+
+  .type-body-sample {
+    font-size: 16px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.65;
+    font-weight: 400;
+    margin-top: 12px;
+  }
+
+  .type-fn {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--turmeric);
+    margin-top: 16px;
+  }
+
+  /* REVENUE */
+  .rev-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .rev-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 32px 28px;
+    transition: border-color 0.3s;
+  }
+
+  .rev-card:hover { border-color: rgba(232,161,10,0.3); }
+
+  .rev-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+
+  .rev-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .rev-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .rev-price {
+    margin-top: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--turmeric);
+    font-weight: 500;
+  }
+
+  /* PITCH SECTION */
+  .pitch-bg {
+    background: var(--chai-dark);
+    padding: 120px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pitch-bg::before {
+    content: '🫖';
+    position: absolute;
+    font-size: 400px;
+    bottom: -80px; right: -60px;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  .pitch-text {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 4vw, 52px);
+    font-weight: 900;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.3;
+    max-width: 900px;
+    margin: 0 auto 48px;
+  }
+
+  .pitch-text span { color: var(--turmeric-light); }
+
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    flex-wrap: wrap;
+    margin-top: 64px;
+  }
+
+  .stat { text-align: center; }
+
+  .stat-n {
+    font-family: 'Fraunces', serif;
+    font-size: 60px;
+    font-weight: 900;
+    color: var(--turmeric-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-l {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.06em;
+    max-width: 120px;
+    margin: 0 auto;
+    line-height: 1.4;
+  }
+
+  /* FOUNDER */
+  .founder-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .f-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 36px;
+    border: 1px solid rgba(74,56,40,0.08);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .f-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+  }
+
+  .f-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--turmeric), var(--chilli));
+  }
+
+  .f-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--turmeric);
+    margin-bottom: 16px;
+  }
+
+  .f-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .f-body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--stone);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--smoke);
+    padding: 64px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .footer-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    font-weight: 900;
+    font-style: italic;
+    color: var(--turmeric);
+  }
+
+  .footer-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  .footer-right {
+    text-align: right;
+  }
+
+  .footer-tagline {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .footer-tagline span { color: var(--turmeric); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: 0s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.3s; }
+  .hero-right {
+    animation: fadeUp 0.7s ease 0.35s both;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links, .nav-tagline { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 90px 24px 64px; }
+    .hero-right { display: none; }
+    .section { padding: 80px 24px; }
+    .section-dark, .section-paper, .section-chilli, .section-turmeric, .pitch-bg { padding: 80px 24px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .social-grid { grid-template-columns: 1fr 1fr; }
+    .pillars-grid { grid-template-columns: 1fr 1fr; }
+    .phases { grid-template-columns: 1fr; }
+    .phases::before { display: none; }
+    .phase { align-items: flex-start; text-align: left; flex-direction: row; gap: 20px; padding: 0 0 32px 0; }
+    .type-examples { grid-template-columns: 1fr; }
+    .rev-grid { grid-template-columns: 1fr; }
+    .founder-grid { grid-template-columns: 1fr; }
+    .camp { grid-template-columns: 1fr; }
+    .camp-right { padding-left: 0; border-left: none; padding-top: 24px; border-top: 1px solid rgba(74,56,40,0.1); }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+    .footer-right { text-align: center; }
+    .tl-note { display: none; }
+    .stats-row { gap: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Pakoda</div>
+  <div class="nav-tagline">Brand & Marketing Bible</div>
+  <ul class="nav-links">
+    <li><a href="#why">Why Pakoda</a></li>
+    <li><a href="#taglines">Taglines</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#campaigns">Campaigns</a></li>
+    <li><a href="#social">Social</a></li>
+    <li><a href="#identity">Identity</a></li>
+    <li><a href="#gtm">GTM</a></li>
+    <li><a href="#pitch">Pitch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+
+  <div class="hero-left">
+    <div class="hero-kicker">
+      <div class="hero-kicker-dot"></div>
+      <span>Brand & Marketing Bible — Full Implementation</span>
+    </div>
+
+    <h1>
+      Pakoda
+      <em>for Business.</em>
+    </h1>
+
+    <div class="hero-sub">pakoda.io — India's most approachable business platform</div>
+
+    <div class="hero-desc">
+      A <strong>WhatsApp-first SaaS</strong> for every Indian small business.
+      Zero commissions. Zero intimidation. Zero app installs.
+      Just business, done the <strong>desi way.</strong>
+    </div>
+
+    <div class="hero-pill-row">
+      <div class="hero-pill">🛒 Grocery</div>
+      <div class="hero-pill">☕ Café</div>
+      <div class="hero-pill">✂️ Salon</div>
+      <div class="hero-pill">💊 Pharmacy</div>
+      <div class="hero-pill">🔧 Repair</div>
+      <div class="hero-pill">📚 Tutor</div>
+      <div class="hero-pill">🏥 Clinic</div>
+      <div class="hero-pill">+ Every SME</div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="wa-phone">
+      <div class="wa-header">
+        <div class="wa-avatar">🍟</div>
+        <div>
+          <div class="wa-name">Sharma Kirana — Pakoda</div>
+          <div class="wa-status">🟢 Bot active · Powered by Pakoda</div>
+        </div>
+      </div>
+      <div class="wa-body">
+        <div class="wa-msg wa-msg-in">
+          <span class="wa-bot-tag">CUSTOMER</span>
+          Bhaiya, kya aloo available hai?
+          <div class="wa-time">10:32</div>
+        </div>
+        <div class="wa-msg wa-msg-out">
+          <span class="wa-bot-tag">PAKODA BOT</span>
+          ✅ Haan! Aloo available hai — ₹30/kg<br><br>
+          Cart mein add karein?<br>
+          1️⃣ Haan, add karo<br>
+          2️⃣ Aur kuch chahiye
+          <div class="wa-time">10:32</div>
+        </div>
+        <div class="wa-msg wa-msg-in">
+          1
+          <div class="wa-time">10:33</div>
+        </div>
+        <div class="wa-msg wa-msg-out">
+          <span class="wa-bot-tag">PAKODA BOT</span>
+          🛒 Added! Aloo 1kg — ₹30<br><br>
+          Order confirm karein? Ya aur kuch add karein?
+          <div class="wa-time">10:33</div>
+        </div>
+        <div class="wa-msg wa-msg-in">
+          Confirm karo
+          <div class="wa-time">10:34</div>
+        </div>
+        <div class="wa-msg wa-msg-out">
+          <span class="wa-bot-tag">PAKODA BOT</span>
+          🎉 Order #PK-2847 confirmed!<br>Sharma Kirana se 30 min mein ready.
+          <div class="wa-time">10:34</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY PAKODA -->
+<div class="section" id="why">
+  <div class="label">01 — Why Pakoda</div>
+  <h2>The name that<br>does the <em>selling.</em></h2>
+  <p class="lead">Before anyone reads a feature list, the name alone creates trust, warmth, and zero intimidation. That's a superpower.</p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <span class="why-icon">🤝</span>
+      <div class="why-title">Zero intimidation factor</div>
+      <div class="why-body">A 60-year-old shopkeeper in Nagpur hears "Pakoda" and smiles. He doesn't feel like this is a tech tool made for someone else. That smile is the difference between signup and bounce.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🗣️</span>
+      <div class="why-title">Pan-India without translation</div>
+      <div class="why-body">From Srinagar to Trivandrum. From Ahmedabad to Guwahati. Every single Indian — regardless of language, region, or culture — knows what a pakoda is and feels warm about it.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">💬</span>
+      <div class="why-title">Word-of-mouth ready</div>
+      <div class="why-body">"Arre, tune Pakoda try kiya?" is the easiest sentence to say. It spreads naturally in chai conversations, WhatsApp groups, and trade association meetings. No elevator pitch needed.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">☕</span>
+      <div class="why-title">Chai-time energy</div>
+      <div class="why-body">Your product runs on WhatsApp — the most casual, conversational platform ever built. Pakoda matches that energy exactly. It's a business tool that feels like a conversation, not enterprise software.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🏠</span>
+      <div class="why-title">Comfort and familiarity</div>
+      <div class="why-body">Small business owners in India are bombarded with tools that feel foreign. Pakoda feels like it belongs. It's theirs. That belonging creates loyalty no marketing budget can buy.</div>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🎯</span>
+      <div class="why-title">Impossible to forget</div>
+      <div class="why-body">You will never forget the name of your business software if it's called Pakoda. It's sticky by design. Every time someone eats a pakoda — which is daily across India — they think of you.</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- TAGLINES -->
+<div class="section-dark" id="taglines">
+  <div class="inner">
+    <div class="label label-dark">02 — Taglines</div>
+    <h2 style="color:var(--white);">The lines that<br><em>stick.</em></h2>
+
+    <div class="tagline-stack">
+      <div class="tl-row">
+        <div class="tl-num">01</div>
+        <div class="tl-main">Apna business. Apna Pakoda.</div>
+        <div class="tl-badge">Hero Line</div>
+        <div class="tl-note">Your business. Your Pakoda.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-num">02</div>
+        <div class="tl-main">Dukaan digital. Bina jhanjhat ke.</div>
+        <div class="tl-note">Shop digitised. No fuss.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-num">03</div>
+        <div class="tl-main">WhatsApp pe hi. Sab kuch.</div>
+        <div class="tl-note">Everything on WhatsApp.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-num">04</div>
+        <div class="tl-main">Chhota business. Bada sapna.</div>
+        <div class="tl-note">Small business. Big dream.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-num">05</div>
+        <div class="tl-main">Chai lo. Orders lo. Pakoda se.</div>
+        <div class="tl-note">Have chai. Take orders. With Pakoda.</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-num">06</div>
+        <div class="tl-main">The business tool that feels like home.</div>
+        <div class="tl-note">English, warm, emotional</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-num">07</div>
+        <div class="tl-main">Zero commission. 100% yours.</div>
+        <div class="tl-note">Anti-Swiggy positioning</div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-num">08</div>
+        <div class="tl-main">India's 63 million shops deserve better.</div>
+        <div class="tl-note">Investor & press angle</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BRAND STORY -->
+<div class="section-dark story-wrap" id="story">
+  <div class="story-big-char">P</div>
+  <div class="inner">
+    <div class="label label-dark">03 — Brand Story</div>
+    <h2 style="color:var(--white);">The story<br>we <em>tell.</em></h2>
+
+    <div class="story-inner" style="margin-top:48px;">
+      <p class="story-p">There is a shop on almost every street in India.</p>
+      <p class="story-p">A grocery store. A cutting chai stall. A tailor. A repair shop. A small restaurant that has been feeding the same neighbourhood for twenty years.</p>
+      <p class="story-p">These businesses run on <strong>relationships, reputation, and hard work.</strong> They run on the owner's memory, a handwritten khata, and <em>40 WhatsApp messages asking if tomatoes are available.</em></p>
+      <p class="story-p">They are the backbone of India's economy. And yet — every business tool ever built was built for someone else. Too expensive. Too complex. Too English. Too foreign.</p>
+      <p class="story-p"><strong>We thought that was wrong.</strong></p>
+      <p class="story-p">So we built Pakoda. A WhatsApp bot you set up in minutes. A catalog your customers browse on their phone. Orders that come in automatically. Inventory that tracks itself. All in your language. No app installs. <strong>Zero commissions. Ever.</strong></p>
+      <p class="story-p">Because a kirana owner in Thrissur shouldn't need a tech degree to run his business well. Because a salon owner in Patna deserves the same tools as a chain salon in Bangalore.</p>
+
+      <div class="story-closer">Because <span>desi business</span><br>deserves a desi platform.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CAMPAIGNS -->
+<div class="section" id="campaigns">
+  <div class="label">04 — Marketing Campaigns</div>
+  <h2>Six campaigns that<br>build <em>Pakoda.</em></h2>
+  <p class="lead">Each campaign targets a different emotion, audience, or growth lever — together they cover the full funnel from awareness to activation.</p>
+
+  <div class="campaigns-list">
+
+    <div class="camp">
+      <div class="camp-left">
+        <div class="camp-num">01</div>
+        <div class="camp-title">Chai Pe Charcha</div>
+        <div class="camp-hindi">The chai-time conversation</div>
+        <div class="camp-type">Launch Campaign</div>
+      </div>
+      <div class="camp-right">
+        <div class="camp-concept">
+          Short, warm documentary-style films shot at real tea stalls and small shops. A grocer, a tailor, a tiffin service owner — all talking about their biggest business headache while having chai. Then they discover Pakoda. The transition is not magical or dramatic — it's <strong>practical and human.</strong> "Arre, yeh toh kaafi aasaan hai." That's the emotion.
+        </div>
+        <div class="camp-line">"Har chhoti dukaan ka bada sapna hota hai.<br>Ab uske liye ek bada platform bhi hai."</div>
+        <div class="camp-formats">
+          <span class="fmt">60-sec mini documentaries</span>
+          <span class="fmt">Instagram Reels</span>
+          <span class="fmt">YouTube pre-roll</span>
+          <span class="fmt">Regional language cuts</span>
+          <span class="fmt">WhatsApp viral sharing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="camp">
+      <div class="camp-left">
+        <div class="camp-num">02</div>
+        <div class="camp-title">Pehla Order</div>
+        <div class="camp-hindi">The first order</div>
+        <div class="camp-type">Emotional / Viral</div>
+      </div>
+      <div class="camp-right">
+        <div class="camp-concept">
+          The moment a small business owner receives their first WhatsApp order through Pakoda — that notification sound, that feeling of disbelief and joy. Capture this moment with real merchants across India. A flower seller in Bengaluru. A pharmacist in Indore. A home baker in Lucknow. <strong>That first order changes everything.</strong> Film it. Share it. Make it a movement.
+        </div>
+        <div class="camp-line">"Pehla order. Aur baaki sab badal gaya."</div>
+        <div class="camp-formats">
+          <span class="fmt">#PehlaOrder UGC campaign</span>
+          <span class="fmt">Merchant reaction videos</span>
+          <span class="fmt">Instagram Stories</span>
+          <span class="fmt">Free trial trigger on tag</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="camp">
+      <div class="camp-left">
+        <div class="camp-num">03</div>
+        <div class="camp-title">Zero Commission. Zero Tension.</div>
+        <div class="camp-hindi">Ek bhi paisa nahi katenge</div>
+        <div class="camp-type">Performance / Conversion</div>
+      </div>
+      <div class="camp-right">
+        <div class="camp-concept">
+          A direct, honest comparison. Show an interactive calculator — enter your monthly revenue, see how much Swiggy, Zomato, or Amazon takes versus how much Pakoda costs. The math is brutal and obvious. <strong>Make the merchant angry at the commission model</strong>, then offer Pakoda as the clear, rational alternative. Performance ads targeting existing Swiggy/Zomato merchants.
+        </div>
+        <div class="camp-line">"Wo 30% lete hain. Hum zero.<br>Tumhari kamai. Sirf tumhari."</div>
+        <div class="camp-formats">
+          <span class="fmt">Interactive commission calculator</span>
+          <span class="fmt">Performance ads</span>
+          <span class="fmt">Google search targeting</span>
+          <span class="fmt">Retargeting campaign</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="camp">
+      <div class="camp-left">
+        <div class="camp-num">04</div>
+        <div class="camp-title">Pakoda Challenge</div>
+        <div class="camp-hindi">Tag. Share. Grow.</div>
+        <div class="camp-type">Viral Growth</div>
+      </div>
+      <div class="camp-right">
+        <div class="camp-concept">
+          Challenge every Indian to post a photo with their favourite local shop, tag them, and say why they love them using #PakodaChallenge. Every tagged business gets a direct outreach from Pakoda with a <strong>30-day free trial</strong>. Creates massive organic reach, a warm lead pipeline, and a community of local business champions — all at once.
+        </div>
+        <div class="camp-line">"Tag your favourite local business.<br>We'll help them grow."</div>
+        <div class="camp-formats">
+          <span class="fmt">#PakodaChallenge</span>
+          <span class="fmt">Instagram + Twitter</span>
+          <span class="fmt">Auto outreach to tagged merchants</span>
+          <span class="fmt">PR story opportunity</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="camp">
+      <div class="camp-left">
+        <div class="camp-num">05</div>
+        <div class="camp-title">Aap Ki Bhasha</div>
+        <div class="camp-hindi">In your language</div>
+        <div class="camp-type">Regional Expansion</div>
+      </div>
+      <div class="camp-right">
+        <div class="camp-concept">
+          Show Pakoda working in Tamil, Telugu, Marathi, Bengali, Punjabi, Malayalam, and Hindi — simultaneously on the same screen. A split-screen product demo that shows one platform speaking every language. Run separate, localised campaigns in each state with <strong>region-specific merchants and regional-language content</strong>. Each state gets its own campaign version.
+        </div>
+        <div class="camp-line">"Pakoda speaks your language.<br>Every Indian language."</div>
+        <div class="camp-formats">
+          <span class="fmt">State-specific ad campaigns</span>
+          <span class="fmt">Vernacular landing pages</span>
+          <span class="fmt">Regional influencer collabs</span>
+          <span class="fmt">Local trade association tie-ups</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="camp">
+      <div class="camp-left">
+        <div class="camp-num">06</div>
+        <div class="camp-title">Dukaan Wali Didi / Bhaiya</div>
+        <div class="camp-hindi">The shopkeeper who made it</div>
+        <div class="camp-type">Long-term Brand Building</div>
+      </div>
+      <div class="camp-right">
+        <div class="camp-concept">
+          A long-running series following 12 real merchants — one per month — across India. Deep-dive storytelling. Their life, their business, their struggle, their growth with Pakoda. Not an ad — a <strong>genuine human story.</strong> Monthly editorial content that builds deep brand equity, emotional loyalty, and earned media over time. The Pakoda Merchant Stories series.
+        </div>
+        <div class="camp-line">"12 businesses. 12 stories.<br>One Pakoda."</div>
+        <div class="camp-formats">
+          <span class="fmt">Monthly long-form video</span>
+          <span class="fmt">Blog / editorial series</span>
+          <span class="fmt">Social documentary cuts</span>
+          <span class="fmt">Annual printed zine</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SOCIAL MEDIA PLAYBOOK -->
+<div class="section-paper" id="social">
+  <div class="inner">
+    <div class="label">05 — Social Media Playbook</div>
+    <h2>Where Pakoda<br><em>lives</em> online.</h2>
+    <p class="lead">Each platform serves a different audience and purpose. Pakoda's social presence is warm, real, and proudly desi — never corporate.</p>
+
+    <div class="social-grid">
+      <div class="social-card sc-ig">
+        <span class="social-icon">📸</span>
+        <div class="social-name">Instagram</div>
+        <div class="social-role">Merchant stories, product demos, behind-the-scenes, #PakodaChallenge, Reels of real shops using the bot</div>
+        <div class="social-freq">4–5 posts / week</div>
+      </div>
+      <div class="social-card sc-wa">
+        <span class="social-icon">💬</span>
+        <div class="social-name">WhatsApp</div>
+        <div class="social-role">Merchant community groups (state-wise), product tips, weekly business insights, support and onboarding in regional languages</div>
+        <div class="social-freq">Daily in communities</div>
+      </div>
+      <div class="social-card sc-li">
+        <span class="social-icon">💼</span>
+        <div class="social-name">LinkedIn</div>
+        <div class="social-role">Founder-led content, India SME data, building in public, investor storytelling, press mentions and milestones</div>
+        <div class="social-freq">3–4 posts / week</div>
+      </div>
+      <div class="social-card sc-fb">
+        <span class="social-icon">👥</span>
+        <div class="social-name">Facebook</div>
+        <div class="social-role">Local business groups, regional language content, older merchant demographic (35–55), community building, local ads</div>
+        <div class="social-freq">3–4 posts / week</div>
+      </div>
+    </div>
+
+    <div style="margin-top:64px;">
+      <div class="label">Content Pillars</div>
+      <h3>5 things Pakoda posts. Consistently.</h3>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar">
+        <span class="pillar-emoji">🏪</span>
+        <div class="pillar-name">Merchant Stories</div>
+        <div class="pillar-desc">Real SME owners. Real wins. Before & after Pakoda.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-emoji">🎬</span>
+        <div class="pillar-name">Behind Pakoda</div>
+        <div class="pillar-desc">Build in public. Founder journey. Product decisions.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-emoji">📊</span>
+        <div class="pillar-name">India SME Insights</div>
+        <div class="pillar-desc">Data, trends, and truths about small businesses.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-emoji">💡</span>
+        <div class="pillar-name">Product Tips</div>
+        <div class="pillar-desc">How to use Pakoda better. Quick wins. Tricks.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-emoji">🗺️</span>
+        <div class="pillar-name">State by State</div>
+        <div class="pillar-desc">How business culture differs across India's regions.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VISUAL IDENTITY -->
+<div class="section-dark" id="identity">
+  <div class="inner">
+    <div class="label label-dark">06 — Visual Identity</div>
+    <h2 style="color:var(--white);">The look of<br><em>Pakoda.</em></h2>
+    <p style="color:rgba(255,255,255,0.5);max-width:560px;">Warm. Earthy. Real. The palette of Indian street food — turmeric, chilli, chai — applied with modern restraint.</p>
+
+    <div class="colors-row">
+      <div class="swatch">
+        <div class="swatch-top" style="background:#E8A10A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-n">Turmeric</div>
+          <div class="swatch-h">#E8A10A</div>
+          <div class="swatch-role">Primary brand colour</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-top" style="background:#F5C842;"></div>
+        <div class="swatch-info">
+          <div class="swatch-n">Turmeric Light</div>
+          <div class="swatch-h">#F5C842</div>
+          <div class="swatch-role">Highlights, CTAs</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-top" style="background:#D63A1A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-n">Chilli Red</div>
+          <div class="swatch-h">#D63A1A</div>
+          <div class="swatch-role">Accent, alerts</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-top" style="background:#7A4E2D;"></div>
+        <div class="swatch-info">
+          <div class="swatch-n">Chai Brown</div>
+          <div class="swatch-h">#7A4E2D</div>
+          <div class="swatch-role">Warmth, secondary</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-top" style="background:#1A1410;"></div>
+        <div class="swatch-info">
+          <div class="swatch-n">Smoke</div>
+          <div class="swatch-h">#1A1410</div>
+          <div class="swatch-role">Dark backgrounds</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-top" style="background:#FAF5EE;"></div>
+        <div class="swatch-info">
+          <div class="swatch-n">Cream</div>
+          <div class="swatch-h">#FAF5EE</div>
+          <div class="swatch-role">Page backgrounds</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-examples">
+      <div class="type-box">
+        <div class="type-lbl">Display Typeface — Headlines</div>
+        <div class="type-big">Pakoda</div>
+        <div class="type-big"><em>Grows.</em></div>
+        <div class="type-fn">Fraunces — Black Italic</div>
+      </div>
+      <div class="type-box">
+        <div class="type-lbl">Body Typeface — UI & Content</div>
+        <div class="type-body-sample" style="color:rgba(255,255,255,0.8);font-size:20px;margin-bottom:12px;">Every small business deserves tools built for them.</div>
+        <div class="type-body-sample">Simple. In your language. On WhatsApp.</div>
+        <div class="type-fn">Instrument Sans — Regular & Medium</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVENUE MODEL -->
+<div class="section-dark">
+  <div class="inner">
+    <div class="label label-dark">07 — Revenue Model</div>
+    <h2 style="color:var(--white);">How Pakoda<br><em>makes money.</em></h2>
+    <p style="color:rgba(255,255,255,0.5);max-width:560px;">Pure SaaS. Zero commissions. The merchant's success is never taxed.</p>
+
+    <div class="rev-grid">
+      <div class="rev-card">
+        <span class="rev-icon">🌱</span>
+        <div class="rev-title">Starter Plan</div>
+        <div class="rev-desc">WhatsApp bot, basic catalog, order management, automated FAQs. Perfect for solo merchants just getting started.</div>
+        <div class="rev-price">₹299 – ₹499 / month</div>
+      </div>
+      <div class="rev-card">
+        <span class="rev-icon">🚀</span>
+        <div class="rev-title">Growth Plan</div>
+        <div class="rev-desc">Everything in Starter + CRM, analytics, multi-language support, discount codes, repeat customer tools.</div>
+        <div class="rev-price">₹999 – ₹1,499 / month</div>
+      </div>
+      <div class="rev-card">
+        <span class="rev-icon">🏢</span>
+        <div class="rev-title">Business Plan</div>
+        <div class="rev-desc">Multi-branch, staff roles, white-label bot, advanced inventory forecasting, dedicated support.</div>
+        <div class="rev-price">₹2,499 – ₹3,999 / month</div>
+      </div>
+      <div class="rev-card">
+        <span class="rev-icon">🏷️</span>
+        <div class="rev-title">White Label</div>
+        <div class="rev-desc">For distributors, trade associations, and franchises that want to offer Pakoda under their own brand to their merchant network.</div>
+        <div class="rev-price">Custom pricing</div>
+      </div>
+      <div class="rev-card">
+        <span class="rev-icon">📦</span>
+        <div class="rev-title">Add-On Modules</div>
+        <div class="rev-desc">Advanced analytics, custom branding, loyalty programs, delivery integration, premium discovery listing.</div>
+        <div class="rev-price">₹199 – ₹599 / module</div>
+      </div>
+      <div class="rev-card">
+        <span class="rev-icon">🤝</span>
+        <div class="rev-title">Merchant Referral</div>
+        <div class="rev-desc">"Apne dost ko bhi Pakoda do." Merchants earn credits or cash for every successful referral. Organic growth engine.</div>
+        <div class="rev-price">Revenue share model</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GTM -->
+<div class="section" id="gtm">
+  <div class="label">08 — Go-to-Market</div>
+  <h2>How Pakoda<br><em>reaches</em> India.</h2>
+  <p class="lead">Start at street level. Scale through community. Earn trust before spending on ads.</p>
+
+  <div class="phases">
+    <div class="phase">
+      <div class="phase-dot">1</div>
+      <div>
+        <div class="phase-title">Plant the Flag</div>
+        <div class="phase-desc">Launch pakoda.io + waitlist. Founder-led storytelling on LinkedIn and Instagram. Target Tier 2/3 cities first.</div>
+        <div class="phase-kpi">→ 10K waitlist</div>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-dot">2</div>
+      <div>
+        <div class="phase-title">Street Level</div>
+        <div class="phase-desc">Trade association partnerships. QR code starter kits. Free workshops in regional languages at local markets.</div>
+        <div class="phase-kpi">→ 500 paying SMEs</div>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-dot">3</div>
+      <div>
+        <div class="phase-title">Proof of Impact</div>
+        <div class="phase-desc">10 deep merchant stories filmed in regional languages. Press push: "Tool helping India's invisible businesses."</div>
+        <div class="phase-kpi">→ Press + investors</div>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-dot">4</div>
+      <div>
+        <div class="phase-title">Network Effect</div>
+        <div class="phase-desc">Referral program. Hyperlocal discovery portal drives customer traffic to merchants, creating pull.</div>
+        <div class="phase-kpi">→ 10K active SMEs</div>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-dot">5</div>
+      <div>
+        <div class="phase-title">Scale & Expand</div>
+        <div class="phase-desc">Paid performance campaigns. WhatsApp-heavy markets: Middle East, Southeast Asia, Africa.</div>
+        <div class="phase-kpi">→ 1L+ SMEs</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PITCH -->
+<div class="pitch-bg" id="pitch">
+  <div class="label label-light" style="justify-content:center;">09 — Investor One-Liner</div>
+  <div class="pitch-text">
+    "Pakoda is India's most approachable SME platform — a <span>WhatsApp-first, zero-commission</span> business OS for the 63 million small businesses that every other tool forgot."
+  </div>
+  <p style="color:rgba(255,255,255,0.4);max-width:560px;margin:0 auto;text-align:center;font-size:16px;line-height:1.7;">The name alone lowers the adoption barrier. The product does the rest. Built in every Indian language, priced for every Indian pocket.</p>
+
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-n">63M</div>
+      <div class="stat-l">Small businesses in India</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">500M+</div>
+      <div class="stat-l">WhatsApp users in India</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">0%</div>
+      <div class="stat-l">Commission on every order</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">∞</div>
+      <div class="stat-l">Times someone eats a pakoda and remembers you</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOUNDER VOICE -->
+<div class="section">
+  <div class="label">10 — Founder Positioning</div>
+  <h2>How you show up<br>as <em>founder.</em></h2>
+
+  <div class="founder-grid">
+    <div class="f-card">
+      <div class="f-lbl">Your Story</div>
+      <div class="f-title">"I didn't build this for Bangalore. I built it for the shop next door."</div>
+      <div class="f-body">Your founding story is personal. You saw a business — maybe in your own family, neighbourhood, or city — that was running on grit and WhatsApp messages and had no real tools. That frustration is your credibility. Lead with it every time.</div>
+    </div>
+    <div class="f-card">
+      <div class="f-lbl">Your Positioning</div>
+      <div class="f-title">The founder who chose the 63 million over the 1%.</div>
+      <div class="f-body">Every other startup chases premium customers. You went the other direction — deliberately. That contrarian choice is powerful and resonates deeply with press, investors who care about impact, and the merchants themselves.</div>
+    </div>
+    <div class="f-card">
+      <div class="f-lbl">What You Post</div>
+      <div class="f-title">5 content pillars for your personal brand.</div>
+      <div class="f-body">
+        <strong>1.</strong> SME stories — businesses you've met and their reality.<br>
+        <strong>2.</strong> Build in public — weekly honest updates on Pakoda's progress.<br>
+        <strong>3.</strong> India SME data — insights that make people think.<br>
+        <strong>4.</strong> Mistakes made — vulnerability builds trust faster than wins.<br>
+        <strong>5.</strong> Why zero commission matters — educate the market.
+      </div>
+    </div>
+    <div class="f-card">
+      <div class="f-lbl">Your Signature Line</div>
+      <div class="f-title">"Every time someone eats a pakoda in India, I want them to think of their business."</div>
+      <div class="f-body">This is your closer. End interviews with it. Put it in your Twitter bio. It's funny, warm, true, and impossible to forget. It also makes every journalist smile — which means they write about you.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Pakoda</div>
+    <div class="footer-label">pakoda.io — Brand & Marketing Bible v1.0</div>
+  </div>
+  <div class="footer-right">
+    <div class="footer-tagline">
+      Apna business. <span>Apna Pakoda.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
